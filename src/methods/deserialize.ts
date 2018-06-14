@@ -22,6 +22,8 @@ function deserializeRootObject(object:JsonValue, objectType:Function = Object, o
 
     const output = Object.create(type.prototype);
 
+    Object.assign(output, object);
+
     const definitions = [...superTypes.reverse(), type].map(t => objectDefinitions.get(t)).filter(t => !!t) as ObjectDefinition[];
 
     definitions.forEach(d => {
